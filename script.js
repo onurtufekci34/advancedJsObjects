@@ -105,46 +105,85 @@
 */
 
 
-let Employee = function(name,salary){
+// let Employee = function(name,salary){
     
-    if (!(this instanceof Employee)){
-        return new Employee(name,salary);
-    }
+//     if (!(this instanceof Employee)){
+//         return new Employee(name,salary);
+//     }
 
+//     this.name = name;
+//     this.salary = salary;
+// }
+// Employee.prototype.calculateSalary = function(){
+//     var month = new Date().getMonth()+1;
+//     var tax = 0;
+//     var total=this.salary*month;
+    
+//     if (total <= 20000){
+//         tax = total*0.2;
+//     }else if (total>20000 && total <=30000){
+//         tax = total*0.25;
+//     }else{
+//         tax = total*0.27;
+//     }
+
+//     return {
+//         tax : tax,
+//         paid : total - tax
+//     }
+// }
+
+// var emp1 = Employee('yigit',3000);
+// var emp1_salary = emp1.calculateSalary();
+
+// var emp2 = new Employee('can',4000);
+// var emp2_salary = emp1.calculateSalary();
+
+// console.log(`${emp1.name} isimli personel toplam ${emp1_salary.tax} Euro vergi
+// kesintisi ile ${emp1_salary.paid} Euro maas almistir`);
+// console.log(`${emp2.name} isimli personel toplam ${emp1_salary.tax} Euro vergi
+// kesintisi ile ${emp2_salary.paid} Euro maas almistir`);
+
+
+
+// Prototypal Inheritance
+
+let Person = function(name,yearOfBirth,job){
     this.name = name;
-    this.salary = salary;
-}
-Employee.prototype.calculateSalary = function(){
-    var month = new Date().getMonth()+1;
-    var tax = 0;
-    var total=this.salary*month;
+    this.yearOfBirth=yearOfBirth;
+    this.job = job;
     
-    if (total <= 20000){
-        tax = total*0.2;
-    }else if (total>20000 && total <=30000){
-        tax = total*0.25;
-    }else{
-        tax = total*0.27;
-    }
-
-    return {
-        tax : tax,
-        paid : total - tax
-    }
 }
 
-var emp1 = Employee('yigit',3000);
-var emp1_salary = emp1.calculateSalary();
 
-var emp2 = new Employee('can',4000);
-var emp2_salary = emp1.calculateSalary();
-
-console.log(`${emp1.name} isimli personel toplam ${emp1_salary.tax} Euro vergi
-kesintisi ile ${emp1_salary.paid} Euro maas almistir`);
-console.log(`${emp2.name} isimli personel toplam ${emp1_salary.tax} Euro vergi
-kesintisi ile ${emp2_salary.paid} Euro maas almistir`);
+Person.prototype.calculateAge = function(){
+    return 2021 - this.yearOfBirth;
+}
 
 
+let Teacher = function(name,yearOfBirth,job,subject){
+    Person.call(this,name,yearOfBirth,job);
+    this.subject=subject;
+}
+
+
+
+// Inherit the Person prototype methods
+Teacher.prototype = Object.create(Person.prototype);
+
+// Set Teacher constructor
+Teacher.prototype.constructor = Teacher;
+
+Teacher.prototype.greeting = function(){
+    return 'hello my name is'+ this.name;
+}
+
+let emel = new Teacher('emel',1989,'teacher','math');
+
+
+
+console.log(emel);
+console.log(emel.calculateAge());
 
 
 
