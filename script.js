@@ -148,57 +148,164 @@
 
 // Prototypal Inheritance
 
-let Person = function(name,yearOfBirth,job){
-    this.name = name;
-    this.yearOfBirth=yearOfBirth;
-    this.job = job;
+// let Person = function(name,yearOfBirth,job){
+//     this.name = name;
+//     this.yearOfBirth=yearOfBirth;
+//     this.job = job;
     
+// }
+
+
+// Person.prototype.calculateAge = function(){
+//     return 2021 - this.yearOfBirth;
+// }
+
+
+// let Teacher = function(name,yearOfBirth,job,subject){
+//     Person.call(this,name,yearOfBirth,job);
+//     this.subject=subject;
+// }
+
+
+
+// // Inherit the Person prototype methods
+// Teacher.prototype = Object.create(Person.prototype);
+
+// // Set Teacher constructor
+// Teacher.prototype.constructor = Teacher;
+
+// Teacher.prototype.greeting = function(){
+//     return 'hello my name is'+ this.name;
+// }
+
+// let emel = new Teacher('emel',1989,'teacher','math');
+
+
+
+// console.log(emel);
+// console.log(emel.calculateAge());
+
+// String
+
+// var str1 = 'sadik';
+// var str2 = new String('sadik');
+
+// console.log(str1);
+// console.log(typeof str1);
+// console.log(str2);
+// console.log(typeof str2);
+
+// if (str1 === 'sadik'){
+//     console.log('yes');
+// }else{
+//     console.log('no');
+// }
+// if (str2 === 'sadik'){
+//     console.log('yes');
+// }else{
+//     console.log('no');
+// }
+
+// String.prototype.repeat = function(n){
+//     return new Array(n+1).join(this);
+// }
+// console.log('sadik'.repeat(10));
+
+
+// // Number 
+
+// var num1 = 10;
+// var num2 = new Number(10);
+
+// // Boolean
+
+// var bool1 = true;
+// var bool2 = new Boolean(true);
+
+// // Object
+
+// var obj1 = {
+//     name: 'sadik'
+// }
+// var obj2 = new Object({
+//     name:'sadik'
+// });
+
+// // Array 
+
+// var arr1 = ['ada','yigit','sena','cinar'];
+// var arr2 = new Array('ada','yigit','sena','cinar');
+
+// Array.prototype.remove = function(member){
+//     var index = this.indexOf(member);
+
+//     if (index > -1){
+//         this.splice(index,1);
+//     }
+//     return this;
+// }
+
+// console.log(arr1.remove('sena'));
+
+// Person Constructor
+function Person (name){
+    this.name = name;
 }
 
-
-Person.prototype.calculateAge = function(){
-    return 2021 - this.yearOfBirth;
+Person.prototype.Introduce = function(){
+    console.log('hello my name is ' + this.name);
+}
+// Teacher constructor
+function Teacher(name,branch){
+    Person.call(this,name);
+    this.branch = branch;
 }
 
-
-let Teacher = function(name,yearOfBirth,job,subject){
-    Person.call(this,name,yearOfBirth,job);
-    this.subject=subject;
-}
-
-
-
-// Inherit the Person prototype methods
 Teacher.prototype = Object.create(Person.prototype);
-
-// Set Teacher constructor
 Teacher.prototype.constructor = Teacher;
-
-Teacher.prototype.greeting = function(){
-    return 'hello my name is'+ this.name;
+Teacher.prototype.teach = function(){
+    console.log(this.name +' teaches ' + this.branch);
 }
 
-let emel = new Teacher('emel',1989,'teacher','math');
+// Student constructor
 
+function Student(name,number){
+    Person.call(this,name);
+    this.number = number;
+}
 
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+Student.prototype.study = function(){
+    console.log(this.name + 's student number is '+this.number);
+}
 
-console.log(emel);
-console.log(emel.calculateAge());
+// Headmaster Constructor
 
+function Headmaster(name,branch){
+    Teacher.call(this,name,branch);
+}
+Headmaster.prototype = Object.create(Teacher.prototype);
+Headmaster.prototype.constructor = Headmaster;
+Headmaster.prototype.shareTask = function(){
+    console.log('I have already shared all the work');
+}
 
+let p1 = new Person('cinar');
+p1.Introduce();
 
+let t1 = new Teacher('sadik','matematik');
+t1.Introduce();
+t1.teach();
 
+let s1 = new Student('yigit','123');
+s1.Introduce();
+s1.study();
 
-
-
-
-
-
-
-
-
-
-
+let h1 = new Headmaster('ahmet','history');
+h1.Introduce();
+h1.teach();
+h1.shareTask();
 
 
 
