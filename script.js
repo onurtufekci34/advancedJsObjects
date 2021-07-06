@@ -248,66 +248,114 @@
 // console.log(arr1.remove('sena'));
 
 // Person Constructor
-function Person (name){
-    this.name = name;
+// function Person (name){
+//     this.name = name;
+// }
+
+// Person.prototype.Introduce = function(){
+//     console.log('hello my name is ' + this.name);
+// }
+// // Teacher constructor
+// function Teacher(name,branch){
+//     Person.call(this,name);
+//     this.branch = branch;
+// }
+
+// Teacher.prototype = Object.create(Person.prototype);
+// Teacher.prototype.constructor = Teacher;
+// Teacher.prototype.teach = function(){
+//     console.log(this.name +' teaches ' + this.branch);
+// }
+
+// // Student constructor
+
+// function Student(name,number){
+//     Person.call(this,name);
+//     this.number = number;
+// }
+
+// Student.prototype = Object.create(Person.prototype);
+// Student.prototype.constructor = Student;
+// Student.prototype.study = function(){
+//     console.log(this.name + 's student number is '+this.number);
+// }
+
+// // Headmaster Constructor
+
+// function Headmaster(name,branch){
+//     Teacher.call(this,name,branch);
+// }
+// Headmaster.prototype = Object.create(Teacher.prototype);
+// Headmaster.prototype.constructor = Headmaster;
+// Headmaster.prototype.shareTask = function(){
+//     console.log('I have already shared all the work');
+// }
+
+// let p1 = new Person('cinar');
+// p1.Introduce();
+
+// let t1 = new Teacher('sadik','matematik');
+// t1.Introduce();
+// t1.teach();
+
+// let s1 = new Student('yigit','123');
+// s1.Introduce();
+// s1.study();
+
+// let h1 = new Headmaster('ahmet','history');
+// h1.Introduce();
+// h1.teach();
+// h1.shareTask();
+
+
+//Primitive & Objects
+
+var a =10;
+var b = a;
+var a = 12;
+
+console.log(a);
+console.log(b);
+
+var obj1 = {
+    name:'ada',
+    age : 10
 }
 
-Person.prototype.Introduce = function(){
-    console.log('hello my name is ' + this.name);
-}
-// Teacher constructor
-function Teacher(name,branch){
-    Person.call(this,name);
-    this.branch = branch;
-}
+var obj2 = obj1;
+obj1.age=12
 
-Teacher.prototype = Object.create(Person.prototype);
-Teacher.prototype.constructor = Teacher;
-Teacher.prototype.teach = function(){
-    console.log(this.name +' teaches ' + this.branch);
+console.log(obj1.age);
+console.log(obj2.age);
+
+var num = 50;
+var account = {
+    name:'yigit',
+    accountNumber:1213465
 }
 
-// Student constructor
-
-function Student(name,number){
-    Person.call(this,name);
-    this.number = number;
+function update(a,b){
+    a = 100;
+    b.accountNumber='222222';
 }
 
-Student.prototype = Object.create(Person.prototype);
-Student.prototype.constructor = Student;
-Student.prototype.study = function(){
-    console.log(this.name + 's student number is '+this.number);
+update(num,account);
+
+console.log(num);
+console.log(account);
+
+
+var products = [
+    {name:'product name',price: 1000},
+    {name:'product name',price: 1000},
+    {name:'product name',price: 1000},
+    {name:'product name',price: 1000},
+    {name:'product name',price: 1000},
+    {name:'product name',price: 1000}
+]
+
+function filterProducts(prd){
+
 }
 
-// Headmaster Constructor
-
-function Headmaster(name,branch){
-    Teacher.call(this,name,branch);
-}
-Headmaster.prototype = Object.create(Teacher.prototype);
-Headmaster.prototype.constructor = Headmaster;
-Headmaster.prototype.shareTask = function(){
-    console.log('I have already shared all the work');
-}
-
-let p1 = new Person('cinar');
-p1.Introduce();
-
-let t1 = new Teacher('sadik','matematik');
-t1.Introduce();
-t1.teach();
-
-let s1 = new Student('yigit','123');
-s1.Introduce();
-s1.study();
-
-let h1 = new Headmaster('ahmet','history');
-h1.Introduce();
-h1.teach();
-h1.shareTask();
-
-
-
-
-
+filterProducts(products);
