@@ -525,24 +525,52 @@
 
 // Call, Apply & Bind
 
-var welcome = function(a,b){
-    console.log('Welcome '+this.name+ '.Are you interested in ' +a+' and '+b);
+// var welcome = function(a,b){
+//     console.log('Welcome '+this.name+ '.Are you interested in ' +a+' and '+b);
+// }
+
+// var yigit = {name:'Yigit'};
+// var ada = {name:'Ada'};
+
+// welcome.call(yigit,'asp.net','angular');
+// welcome.call(ada,'asp.net','angular');
+
+// welcome.apply(yigit,['asp.net','angular']);
+// welcome.apply(ada,['asp.net','angular']);
+
+// welcomeYigit =  welcome.bind(yigit);
+
+// welcomeYigit('asp.net','angular');
+
+// welcomeAda = welcome.bind(ada);
+
+// welcomeAda('asp.net','angular');
+
+// Demo : Numeric Range 
+
+var num = {
+    min : 0,
+    max : 100,
+    checkNumericRange : function(value){
+        if (typeof value !=='number'){
+            return false;
+        }else{
+            return value >= this.min && value<=this.max;
+        }
+    }
 }
 
-var yigit = {name:'Yigit'};
-var ada = {name:'Ada'};
+console.log(num.checkNumericRange(20));
+console.log(num.checkNumericRange(-20));
 
-welcome.call(yigit,'asp.net','angular');
-welcome.call(ada,'asp.net','angular');
+var num1 = {min : 50, max : 60};
 
-welcome.apply(yigit,['asp.net','angular']);
-welcome.apply(ada,['asp.net','angular']);
+console.log(num.checkNumericRange.call(num1,55));
+console.log(num.checkNumericRange.call(num1,65));
+console.log(num.checkNumericRange.apply(num1,[55]));
+console.log(num.checkNumericRange.apply(num1,[65]));
 
-welcomeYigit =  welcome.bind(yigit);
+var checkNumber = num.checkNumericRange.bind(num1);
 
-welcomeYigit('asp.net','angular');
-
-welcomeAda = welcome.bind(ada);
-
-welcomeAda('asp.net','angular');
+console.log(checkNumber(56));
 
