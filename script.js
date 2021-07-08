@@ -477,48 +477,72 @@
 
 // Getter & Setter 
 
-const person = {
-    firstName : 'Sadik',
-    lastName : 'Turan',
-    // getfullName : function(){
-    //     return `${this.firstName} ${this.lastName}`
-    // }
-    // get fullName(){
-    //     return `${this.firstName} ${this.lastName}`
-    // },
-    // setFullName : function(value){
-    //     const parts = value.split(' ');
-    //     this.firstName = parts[0];
-    //     this.lastName = parts[1];
-    // }
-    // set fullName(value){
-    //     const parts = value.split(' ');
-    //     this.firstName = parts[0];
-    //     this.lastName = parts[1];
-    // }
+// const person = {
+//     firstName : 'Sadik',
+//     lastName : 'Turan',
+//     // getfullName : function(){
+//     //     return `${this.firstName} ${this.lastName}`
+//     // }
+//     // get fullName(){
+//     //     return `${this.firstName} ${this.lastName}`
+//     // },
+//     // setFullName : function(value){
+//     //     const parts = value.split(' ');
+//     //     this.firstName = parts[0];
+//     //     this.lastName = parts[1];
+//     // }
+//     // set fullName(value){
+//     //     const parts = value.split(' ');
+//     //     this.firstName = parts[0];
+//     //     this.lastName = parts[1];
+//     // }
+// }
+
+// Object.defineProperty(person,'fullName',{
+//     get function() {
+//         return `${this.firstName} ${this.lastName}`
+//     },
+//     set function(value) {
+        
+//         const parts = value.split(' ');
+//         this.firstName = parts[0];
+//         this.lastName = parts[1];
+//     }
+// })
+
+// Object.defineProperty(person,'age',{
+//     value : 50,
+//     writable : true //you have to use this if you want to change age.
+// })
+
+// person.age = 55;
+
+// //person.fullName='cinar turan';
+
+// //console.log(person.fullName);
+
+// console.log(person);
+
+// Call, Apply & Bind
+
+var welcome = function(a,b){
+    console.log('Welcome '+this.name+ '.Are you interested in ' +a+' and '+b);
 }
 
-Object.defineProperty(person,'fullName',{
-    get function() {
-        return `${this.firstName} ${this.lastName}`
-    },
-    set function(value) {
-        
-        const parts = value.split(' ');
-        this.firstName = parts[0];
-        this.lastName = parts[1];
-    }
-})
+var yigit = {name:'Yigit'};
+var ada = {name:'Ada'};
 
-Object.defineProperty(person,'age',{
-    value : 50,
-    writable : true //you have to use this if you want to change age.
-})
+welcome.call(yigit,'asp.net','angular');
+welcome.call(ada,'asp.net','angular');
 
-person.age = 55;
+welcome.apply(yigit,['asp.net','angular']);
+welcome.apply(ada,['asp.net','angular']);
 
-//person.fullName='cinar turan';
+welcomeYigit =  welcome.bind(yigit);
 
-//console.log(person.fullName);
+welcomeYigit('asp.net','angular');
 
-console.log(person);
+welcomeAda = welcome.bind(ada);
+
+welcomeAda('asp.net','angular');
+
