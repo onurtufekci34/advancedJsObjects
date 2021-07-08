@@ -310,52 +310,215 @@
 
 //Primitive & Objects
 
-var a =10;
-var b = a;
-var a = 12;
+// var a =10;
+// var b = a;
+// var a = 12;
 
-console.log(a);
-console.log(b);
+// console.log(a);
+// console.log(b);
 
-var obj1 = {
-    name:'ada',
-    age : 10
+// var obj1 = {
+//     name:'ada',
+//     age : 10
+// }
+
+// var obj2 = obj1;
+// obj1.age=12
+
+// console.log(obj1.age);
+// console.log(obj2.age);
+
+// var num = 50;
+// var account = {
+//     name:'yigit',
+//     accountNumber:1213465
+// }
+
+// function update(a,b){
+//     a = 100;
+//     b.accountNumber='222222';
+// }
+
+// update(num,account);
+
+// console.log(num);
+// console.log(account);
+
+
+// var products = [
+//     {name:'product name',price: 1000},
+//     {name:'product name',price: 1000},
+//     {name:'product name',price: 1000},
+//     {name:'product name',price: 1000},
+//     {name:'product name',price: 1000},
+//     {name:'product name',price: 1000}
+// ]
+
+// function filterProducts(prd){
+
+// }
+
+// filterProducts(products);
+
+
+// Callback Functions 
+
+// function MultipleByTwo(a,b,c,callback){
+//     let arr = [];
+
+//     if(callback && typeof callback === 'function'){
+//         for (let i = 0;i<3;i++){
+//             arr[i] = callback(arguments[i]*2);
+//         }
+//     }
+
+
+    
+//     return arr;
+// }
+
+// function addOne(a){
+//     return a+1;
+// }
+// function addTwo(a){
+//     return a+2;
+// }
+// function addThree(a){
+//     return a+3;
+// }
+
+// //val = MultipleByTwo(5,10,20,addThree);
+// val = MultipleByTwo(5,10,20,function(a){//anonymous function
+//     return a+15;
+// });
+// //val = addOne(10);
+
+// // for(let i = 0 ; i < val.length;i++){
+// //     val[i] = addOne(val[i]);
+// // }
+
+// console.log(val);
+
+//Immediate Functions 
+// function welcome(){
+
+//     var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+
+
+//     var today = new Date();
+
+//     var msg = 'Welcome. Today is '+ days[today.getDay()];
+//     return msg;
+// }
+
+// (function(){
+
+// }());
+
+// (function(){
+
+// })();
+
+// (function(name){
+//     var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+
+
+//     var today = new Date();
+
+//     var msg = 'Welcome '+name+' Today is '+ days[today.getDay()];
+//     console.log(msg);
+// }('Cinar'));
+
+// Functions that Return Functions 
+
+// function Question(hobby){
+//     switch(hobby){
+//         case 'car' :
+//             return function(name){
+//                 console.log(name + ' do you have a car?');
+//             }
+//         break;
+
+//         case 'book' :
+//             return function(name){
+//                 console.log(name + ' what is your favorite book?');
+//             }
+//         break;
+
+//         case 'software' :
+//             return function(name,type){
+//                 console.log(name + ' are you interested in '+type+'?');
+//             }
+//         break;
+        
+//         default:
+//         return function(name){
+//             console.log(name + ' how are you?');
+//         }
+//     }
+// }
+
+// var carQuestion = Question('car');
+
+// carQuestion('cinar');
+// carQuestion('emel');
+
+// var bookQuestion = Question('book');
+
+// bookQuestion('yigit');
+
+// var softwarekQuestion = Question('software');
+
+// softwarekQuestion('sadik','node.js');
+// softwarekQuestion('ali','angular');
+
+
+// Getter & Setter 
+
+const person = {
+    firstName : 'Sadik',
+    lastName : 'Turan',
+    // getfullName : function(){
+    //     return `${this.firstName} ${this.lastName}`
+    // }
+    // get fullName(){
+    //     return `${this.firstName} ${this.lastName}`
+    // },
+    // setFullName : function(value){
+    //     const parts = value.split(' ');
+    //     this.firstName = parts[0];
+    //     this.lastName = parts[1];
+    // }
+    // set fullName(value){
+    //     const parts = value.split(' ');
+    //     this.firstName = parts[0];
+    //     this.lastName = parts[1];
+    // }
 }
 
-var obj2 = obj1;
-obj1.age=12
+Object.defineProperty(person,'fullName',{
+    get function() {
+        return `${this.firstName} ${this.lastName}`
+    },
+    set function(value) {
+        
+        const parts = value.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+})
 
-console.log(obj1.age);
-console.log(obj2.age);
+Object.defineProperty(person,'age',{
+    value : 50,
+    writable : true //you have to use this if you want to change age.
+})
 
-var num = 50;
-var account = {
-    name:'yigit',
-    accountNumber:1213465
-}
+person.age = 55;
 
-function update(a,b){
-    a = 100;
-    b.accountNumber='222222';
-}
+//person.fullName='cinar turan';
 
-update(num,account);
+//console.log(person.fullName);
 
-console.log(num);
-console.log(account);
-
-
-var products = [
-    {name:'product name',price: 1000},
-    {name:'product name',price: 1000},
-    {name:'product name',price: 1000},
-    {name:'product name',price: 1000},
-    {name:'product name',price: 1000},
-    {name:'product name',price: 1000}
-]
-
-function filterProducts(prd){
-
-}
-
-filterProducts(products);
+console.log(person);
