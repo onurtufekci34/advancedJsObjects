@@ -548,29 +548,98 @@
 
 // Demo : Numeric Range 
 
-var num = {
-    min : 0,
-    max : 100,
-    checkNumericRange : function(value){
-        if (typeof value !=='number'){
-            return false;
-        }else{
-            return value >= this.min && value<=this.max;
+// var num = {
+//     min : 0,
+//     max : 100,
+//     checkNumericRange : function(value){
+//         if (typeof value !=='number'){
+//             return false;
+//         }else{
+//             return value >= this.min && value<=this.max;
+//         }
+//     }
+// }
+
+// console.log(num.checkNumericRange(20));
+// console.log(num.checkNumericRange(-20));
+
+// var num1 = {min : 50, max : 60};
+
+// console.log(num.checkNumericRange.call(num1,55));
+// console.log(num.checkNumericRange.call(num1,65));
+// console.log(num.checkNumericRange.apply(num1,[55]));
+// console.log(num.checkNumericRange.apply(num1,[65]));
+
+// var checkNumber = num.checkNumericRange.bind(num1);
+
+// console.log(checkNumber(56));
+
+// Error Handling 
+
+// Reference Error
+// TypeError
+// SyntaxError
+// URIError
+
+// var user = {
+//     name:'sadik turan'
+// }
+
+// try{
+//     //console.log(myFunction());
+//     console.log(user.name);
+//     if(!user.email){
+//         throw new Error('User has no email');
+//     }
+//     console.log(user.email);
+// }
+
+// catch(e){
+//     console.log(e);
+//     console.log(e.message);
+//     console.log(e.name);
+//     console.log(e instanceof ReferenceError);
+//     console.log(e instanceof TypeError);
+//     console.log(typeof e);
+// }
+
+// finally{
+//     console.log('finaly block');
+// }
+
+// Example of Error Handling
+
+document.getElementById('myBtn').addEventListener('click',function(e){
+    var name = document.getElementById('name');
+    var age = document.getElementById('age');
+    var errors = document.getElementById('errors');
+    errors.innerHTML = '';
+    try{
+        if(name.Value.length === 0){
+            throw new Error('name is required');
         }
+        if(name.Value.length > 20){
+            throw new Error('name is too long');
+        }
+        if(age.Value.length === 0){
+            throw new Error('age is required');
+        }
+        if(age.Value.length > 20){
+            throw new Error('age is too long');
+        }
+        if(isNaN(age.Value)){
+            throw new Error('age is not numeric');
+        }
+
+        console.log('form is submitted');
+    } catch(err){
+        errors.innerHTML = err;
+    }finally{
+        name.Value = '';
+        age.Value = '';
     }
-}
 
-console.log(num.checkNumericRange(20));
-console.log(num.checkNumericRange(-20));
 
-var num1 = {min : 50, max : 60};
-
-console.log(num.checkNumericRange.call(num1,55));
-console.log(num.checkNumericRange.call(num1,65));
-console.log(num.checkNumericRange.apply(num1,[55]));
-console.log(num.checkNumericRange.apply(num1,[65]));
-
-var checkNumber = num.checkNumericRange.bind(num1);
-
-console.log(checkNumber(56));
+    e.preventDefault();
+});
 
